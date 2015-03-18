@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="double.cpp" />
     <ClCompile Include="maintest.cpp" />
     <ClCompile Include="mydouble.cpp" />
   </ItemGroup>
