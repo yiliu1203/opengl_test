@@ -2,6 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include "const.h"
+// 鼠标点击 将投影矩阵输出到txt文档
 #ifndef _mydouble_
 using namespace std;
 void output2file(char* filename, float *glf, int row, int col);
