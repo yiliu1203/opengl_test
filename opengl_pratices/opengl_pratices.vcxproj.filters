@@ -24,10 +24,16 @@
     <ClCompile Include="double.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="quadTree.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="const.h">
-      <Filter>源文件</Filter>
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="quadTree.h">
+      <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
