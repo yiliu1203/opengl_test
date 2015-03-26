@@ -13,7 +13,9 @@
   <ItemGroup>
     <ClCompile Include="double.cpp" />
     <ClCompile Include="maintest.cpp" />
+    <ClCompile Include="mybufferobj.cpp" />
     <ClCompile Include="mydouble.cpp" />
+    <ClCompile Include="mydrawCube.cpp" />
     <ClCompile Include="myvao.cpp" />
     <ClCompile Include="quadTree.cpp" />
   </ItemGroup>
@@ -68,6 +70,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>glew32.lib;Msimg32.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

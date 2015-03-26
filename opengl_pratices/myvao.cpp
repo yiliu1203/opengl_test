@@ -1,6 +1,6 @@
 #include <iostream>
-#include <gl/glut.h>
 #include <gl/glew.h>
+#include <gl/glut.h>
 #include "const.h"
 using namespace std;
 #ifndef _myvao_
