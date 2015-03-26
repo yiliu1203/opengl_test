@@ -27,6 +27,15 @@
     <ClCompile Include="quadTree.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="mydrawCube.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="mybufferobj.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="myvao.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="const.h">
