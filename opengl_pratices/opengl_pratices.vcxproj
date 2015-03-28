@@ -11,15 +11,20 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="camera.cpp" />
     <ClCompile Include="double.cpp" />
     <ClCompile Include="maintest.cpp" />
+    <ClCompile Include="movelight.cpp" />
     <ClCompile Include="mybufferobj.cpp" />
+    <ClCompile Include="mycolorMat.cpp" />
     <ClCompile Include="mydouble.cpp" />
     <ClCompile Include="mydrawCube.cpp" />
     <ClCompile Include="myvao.cpp" />
+    <ClCompile Include="NateLight.cpp" />
     <ClCompile Include="quadTree.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="camera.h" />
     <ClInclude Include="const.h" />
     <ClInclude Include="quadTree.h" />
   </ItemGroup>
