@@ -2,6 +2,7 @@
 #include <gl/glut.h>
 #include "const.h"
 using  namespace std;
+#ifndef _mycolorMat_
 GLfloat diffuseMat[] = { 0.0, 0.0, 0.0, 1.0 };
 GLfloat ambientMat[] = { 0.0, 0.0, 0.0, 1.0 };
 GLfloat light_spec[] = { 1.0, 1.0, 1.0, 1.0 };
@@ -89,5 +90,5 @@ int main()
 	glutIdleFunc(idle);
 	glutMainLoop();
 	return 0;
-
 }
+#endif

@@ -22,6 +22,7 @@
     <ClCompile Include="myvao.cpp" />
     <ClCompile Include="NateLight.cpp" />
     <ClCompile Include="quadTree.cpp" />
+    <ClCompile Include="shade_1.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="camera.h" />
