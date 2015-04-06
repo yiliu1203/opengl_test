@@ -6,5 +6,4 @@
 #define _mydrawCube_
 #define _movelight_
 #define _NateLight_
-
 #define _mycolorMat_

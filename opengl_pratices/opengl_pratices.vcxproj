@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="althorim_1.cpp" />
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="double.cpp" />
     <ClCompile Include="maintest.cpp" />
@@ -28,6 +29,9 @@
     <ClInclude Include="camera.h" />
     <ClInclude Include="const.h" />
     <ClInclude Include="quadTree.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Text.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{FC9E67E4-60F3-4314-B7CD-263D369EAEAB}</ProjectGuid>
@@ -76,7 +80,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>glew32.lib;Msimg32.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glew32.lib;Msimg32.lib;winmm.lib;freeglutd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

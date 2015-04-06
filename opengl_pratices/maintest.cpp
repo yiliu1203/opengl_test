@@ -8,7 +8,7 @@ void myDisplay(void){
 	glFlush();
 }
 
-int main_maintest(int argc, char *argv[]){
+int main(int argc, char *argv[]){
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_RGB | GLUT_SINGLE);
 	glutInitWindowPosition(100, 100);

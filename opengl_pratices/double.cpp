@@ -61,7 +61,7 @@ void mouse(int button, int state, int x, int y)
 *  Request double buffer display mode.
 *  Register mouse input callback functions
 */
-int main_double(int argc, char** argv)
+int main(int argc, char** argv)
 {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
