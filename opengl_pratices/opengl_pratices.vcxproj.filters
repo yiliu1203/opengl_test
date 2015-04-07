@@ -54,6 +54,15 @@
     <ClCompile Include="althorim_1.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="textfile.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadShaders.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="opengl_8th_1.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="const.h">
@@ -65,10 +74,30 @@
     <ClInclude Include="camera.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="textfile.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadShaders.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Text.txt">
       <Filter>资源文件</Filter>
     </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="minimal.frag">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="minimal.vert">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="triangles.frag">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="triangles.vert">
+      <Filter>资源文件</Filter>
+    </None>
   </ItemGroup>
 </Project>

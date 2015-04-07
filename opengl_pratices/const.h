@@ -7,3 +7,5 @@
 #define _movelight_
 #define _NateLight_
 #define _mycolorMat_
+#define _shade_1_
+//#define _opengl_8th_1_

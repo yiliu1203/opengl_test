@@ -14,6 +14,7 @@
     <ClCompile Include="althorim_1.cpp" />
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="double.cpp" />
+    <ClCompile Include="LoadShaders.cpp" />
     <ClCompile Include="maintest.cpp" />
     <ClCompile Include="movelight.cpp" />
     <ClCompile Include="mybufferobj.cpp" />
@@ -22,16 +23,26 @@
     <ClCompile Include="mydrawCube.cpp" />
     <ClCompile Include="myvao.cpp" />
     <ClCompile Include="NateLight.cpp" />
+    <ClCompile Include="opengl_8th_1.cpp" />
     <ClCompile Include="quadTree.cpp" />
     <ClCompile Include="shade_1.cpp" />
+    <ClCompile Include="textfile.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="camera.h" />
     <ClInclude Include="const.h" />
+    <ClInclude Include="LoadShaders.h" />
     <ClInclude Include="quadTree.h" />
+    <ClInclude Include="textfile.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Text.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="minimal.frag" />
+    <None Include="minimal.vert" />
+    <None Include="triangles.vert" />
+    <None Include="triangles.frag" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{FC9E67E4-60F3-4314-B7CD-263D369EAEAB}</ProjectGuid>
@@ -80,7 +91,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>glew32.lib;Msimg32.lib;winmm.lib;freeglutd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glew32s.lib;Msimg32.lib;winmm.lib;freeglutd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
