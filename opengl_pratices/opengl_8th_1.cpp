@@ -76,7 +76,8 @@ void reshapefun(int x, int y)
 	gluPerspective(40, 640 / 480, 0, 1000);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
-	gluLookAt(0, 0, 10000, 0, 0, -1, 0, 1, 0);			
+	gluLookAt(0, 0, 10000, 0, 0, -1, 0, 1, 0);	
+//---------------------------------------------------------------------------------
 	//o 0000000000000 这里怎么设置都不起作用，因为使用shader的时候这里应该被shader使用，
 	// 而此时shader 根本就没用这些参数
 	// glew32.lib 用在固定管线中， glut32s.lib 用在非固定管线中

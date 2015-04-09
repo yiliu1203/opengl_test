@@ -63,6 +63,12 @@
     <ClCompile Include="opengl_8th_1.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="algothrim_2.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="algothrim_3.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="const.h">

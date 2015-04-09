@@ -11,6 +11,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="algothrim_2.cpp" />
+    <ClCompile Include="algothrim_3.cpp" />
     <ClCompile Include="althorim_1.cpp" />
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="double.cpp" />
