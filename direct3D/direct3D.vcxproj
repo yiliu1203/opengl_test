@@ -10,48 +10,10 @@
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="algothrim_2.cpp" />
-    <ClCompile Include="algothrim_3.cpp" />
-    <ClCompile Include="althorim_1.cpp" />
-    <ClCompile Include="camera.cpp" />
-    <ClCompile Include="double.cpp" />
-    <ClCompile Include="LoadShaders.cpp" />
-    <ClCompile Include="maintest.cpp" />
-    <ClCompile Include="movelight.cpp" />
-    <ClCompile Include="mybufferobj.cpp" />
-    <ClCompile Include="mycolorMat.cpp" />
-    <ClCompile Include="mydouble.cpp" />
-    <ClCompile Include="mydrawCube.cpp" />
-    <ClCompile Include="myvao.cpp" />
-    <ClCompile Include="NateLight.cpp" />
-    <ClCompile Include="opengl_8th_1.cpp" />
-    <ClCompile Include="quadTree.cpp" />
-    <ClCompile Include="shade_1.cpp" />
-    <ClCompile Include="textfile.cpp" />
-    <ClCompile Include="_algothrim_4_.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="camera.h" />
-    <ClInclude Include="const.h" />
-    <ClInclude Include="LoadShaders.h" />
-    <ClInclude Include="quadTree.h" />
-    <ClInclude Include="textfile.h" />
-    <ClInclude Include="vmath.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Text.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="minimal.frag" />
-    <None Include="minimal.vert" />
-    <None Include="triangles.vert" />
-    <None Include="triangles.frag" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{FC9E67E4-60F3-4314-B7CD-263D369EAEAB}</ProjectGuid>
+    <ProjectGuid>{4E6E311D-70EC-4225-B533-A814464BDAD9}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>opengl_pratices</RootNamespace>
+    <RootNamespace>direct3D</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -79,6 +41,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -93,9 +57,9 @@
       <SDLCheck>true</SDLCheck>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>glew32s.lib;Msimg32.lib;winmm.lib;freeglutd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>d3d9.lib;d3dx10d.lib;d3dx9d.lib;dxerr.lib;dxguid.lib;winmm.lib;comctl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -116,6 +80,25 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="config.h" />
+    <ClInclude Include="resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="dx9_fullscreen.cpp" />
+    <ClCompile Include="dx9_initialization.cpp" />
+    <ClCompile Include="dx9_view_ports.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="codesampler.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="dx9_initialization.aps" />
+    <None Include="teapot.x" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="dx9_initialization.rc" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

@@ -10,48 +10,10 @@
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="algothrim_2.cpp" />
-    <ClCompile Include="algothrim_3.cpp" />
-    <ClCompile Include="althorim_1.cpp" />
-    <ClCompile Include="camera.cpp" />
-    <ClCompile Include="double.cpp" />
-    <ClCompile Include="LoadShaders.cpp" />
-    <ClCompile Include="maintest.cpp" />
-    <ClCompile Include="movelight.cpp" />
-    <ClCompile Include="mybufferobj.cpp" />
-    <ClCompile Include="mycolorMat.cpp" />
-    <ClCompile Include="mydouble.cpp" />
-    <ClCompile Include="mydrawCube.cpp" />
-    <ClCompile Include="myvao.cpp" />
-    <ClCompile Include="NateLight.cpp" />
-    <ClCompile Include="opengl_8th_1.cpp" />
-    <ClCompile Include="quadTree.cpp" />
-    <ClCompile Include="shade_1.cpp" />
-    <ClCompile Include="textfile.cpp" />
-    <ClCompile Include="_algothrim_4_.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="camera.h" />
-    <ClInclude Include="const.h" />
-    <ClInclude Include="LoadShaders.h" />
-    <ClInclude Include="quadTree.h" />
-    <ClInclude Include="textfile.h" />
-    <ClInclude Include="vmath.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Text.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="minimal.frag" />
-    <None Include="minimal.vert" />
-    <None Include="triangles.vert" />
-    <None Include="triangles.frag" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{FC9E67E4-60F3-4314-B7CD-263D369EAEAB}</ProjectGuid>
+    <ProjectGuid>{09FAA4C8-C3E5-44B8-9715-0C48F1F61380}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>opengl_pratices</RootNamespace>
+    <RootNamespace>opengl_8th</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -79,6 +41,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)$(ProjectName)\include\</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -95,7 +58,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>glew32s.lib;Msimg32.lib;winmm.lib;freeglutd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glew32s.lib;Msimg32.lib;winmm.lib;freeglut.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -116,6 +79,43 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="include\CheckError.h" />
+    <ClInclude Include="include\LoadShaders.h" />
+    <ClInclude Include="include\mat.h" />
+    <ClInclude Include="include\vapp.h" />
+    <ClInclude Include="include\vbm.h" />
+    <ClInclude Include="include\vec.h" />
+    <ClInclude Include="include\vermilion.h" />
+    <ClInclude Include="include\vgl.h" />
+    <ClInclude Include="include\vmath.h" />
+    <ClInclude Include="include\vutils.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ch03_drawcommands.cpp" />
+    <ClCompile Include="ch03_instancing2.cpp" />
+    <ClCompile Include="ch03_pointsprites.cpp" />
+    <ClCompile Include="ch06_load_texture.cpp" />
+    <ClCompile Include="config.h" />
+    <ClCompile Include="LoadShaders.cpp" />
+    <ClCompile Include="targa.cpp" />
+    <ClCompile Include="vbm.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="armadillo_low.vbm" />
+    <None Include="pointsprites.fs.glsl" />
+    <None Include="pointsprites.vs.glsl" />
+    <None Include="pointsprites2.fs.glsl" />
+    <None Include="primitive_restart.fs.glsl" />
+    <None Include="primitive_restart.vs.glsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="sprite.tga" />
+    <Image Include="sprite2.tga" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="read.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

@@ -11,4 +11,5 @@
 #define _opengl_8th_1_
 #define _althorim_1_
 #define _algothrim_2_
-//#define _algothrim_3_
+#define _algothrim_3_
+#define _algothrim_4_

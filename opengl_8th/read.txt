@@ -1,0 +1,2 @@
+//  主要修改 glUniformMatrix4fv 函数
+//  ch03_instancing2  没有显示。。。。

@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\CheckError.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\LoadShaders.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\mat.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\vapp.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\vbm.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\vec.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\vermilion.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\vgl.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\vmath.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\vutils.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ch03_drawcommands.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="config.h">
+      <Filter>头文件</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadShaders.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="vbm.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ch03_instancing2.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ch03_pointsprites.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="targa.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ch06_load_texture.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="primitive_restart.fs.glsl">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="primitive_restart.vs.glsl">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="pointsprites.fs.glsl">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="pointsprites.vs.glsl">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="pointsprites2.fs.glsl">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="armadillo_low.vbm">
+      <Filter>资源文件</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="sprite.tga">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="sprite2.tga">
+      <Filter>资源文件</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="read.txt">
+      <Filter>资源文件</Filter>
+    </Text>
+  </ItemGroup>
+</Project>
