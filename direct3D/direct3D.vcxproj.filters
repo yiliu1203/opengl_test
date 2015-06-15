@@ -32,6 +32,12 @@
     <ClCompile Include="dx9_view_ports.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="dx9_primitive_types.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="dx9_vertex_data.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="codesampler.ico">

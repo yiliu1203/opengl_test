@@ -87,6 +87,8 @@
   <ItemGroup>
     <ClCompile Include="dx9_fullscreen.cpp" />
     <ClCompile Include="dx9_initialization.cpp" />
+    <ClCompile Include="dx9_primitive_types.cpp" />
+    <ClCompile Include="dx9_vertex_data.cpp" />
     <ClCompile Include="dx9_view_ports.cpp" />
   </ItemGroup>
   <ItemGroup>
