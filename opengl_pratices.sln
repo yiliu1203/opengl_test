@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "opengl_8th", "opengl_8th\op
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "direct3D", "direct3D\direct3D.vcxproj", "{4E6E311D-70EC-4225-B533-A814464BDAD9}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DragonBook", "DragonBook\DragonBook.vcxproj", "{24706658-8453-413F-A668-2256E8058387}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -27,6 +29,10 @@ Global
 		{4E6E311D-70EC-4225-B533-A814464BDAD9}.Debug|Win32.Build.0 = Debug|Win32
 		{4E6E311D-70EC-4225-B533-A814464BDAD9}.Release|Win32.ActiveCfg = Release|Win32
 		{4E6E311D-70EC-4225-B533-A814464BDAD9}.Release|Win32.Build.0 = Release|Win32
+		{24706658-8453-413F-A668-2256E8058387}.Debug|Win32.ActiveCfg = Debug|Win32
+		{24706658-8453-413F-A668-2256E8058387}.Debug|Win32.Build.0 = Debug|Win32
+		{24706658-8453-413F-A668-2256E8058387}.Release|Win32.ActiveCfg = Release|Win32
+		{24706658-8453-413F-A668-2256E8058387}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

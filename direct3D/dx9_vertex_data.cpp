@@ -94,7 +94,7 @@ int WINAPI WinMain(HINSTANCE hInstance,
 
 	memset(&uMsg, 0, sizeof(uMsg));
 
-	winClass.lpszClassName = "MY_WINDOWS_CLASS";
+	winClass.lpszClassName = L"MY_WINDOWS_CLASS";
 	winClass.cbSize = sizeof(WNDCLASSEX);
 	winClass.style = CS_HREDRAW | CS_VREDRAW;
 	winClass.lpfnWndProc = WindowProc;

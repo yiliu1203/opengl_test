@@ -1,2 +1,8 @@
 20150403  使用了glew 1.12 版本  freeglut 3.0 的版本，opengl的版本可以支持 4.3 
 freeglut中的glut。h替换了原来的glut.h,但是应该是兼容了原来的版本，原来的程序都可以通过
+
+
+
+opengl_8th 中 库文件 glew32s.lib;Msimg32.lib;winmm.lib;freeglut.lib;
+
+direct3D 中 d3d9.lib d3dx10d.lib d3dx9d.lib dxerr.lib dxguid.lib winmm.lib comctl32.lib
