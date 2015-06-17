@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="D3DInit.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="d3dUtility.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -28,6 +25,15 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="05litPyramid.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="06TexQuad.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="07MtrlAlpha.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="01D3DInit.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
