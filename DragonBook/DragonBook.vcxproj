@@ -53,7 +53,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
     </ClCompile>
     <Link>
@@ -85,13 +85,31 @@
     <ClCompile Include="02Cube.cpp" />
     <ClCompile Include="06TexQuad.cpp" />
     <ClCompile Include="01D3DInit.cpp" />
+    <ClCompile Include="08StencilShadow.cpp" />
+    <ClCompile Include="09CreateMeshFVF.cpp" />
+    <ClCompile Include="12CameraApp.cpp" />
+    <ClCompile Include="13TerrainDriver.cpp" />
+    <ClCompile Include="camera.cpp" />
+    <ClCompile Include="d3dfont.cpp" />
+    <ClCompile Include="d3dutil.cpp" />
     <ClCompile Include="d3dUtility.cpp" />
     <ClCompile Include="05litPyramid.cpp" />
     <ClCompile Include="07MtrlAlpha.cpp" />
+    <ClCompile Include="08StencilMirror.cpp" />
+    <ClCompile Include="11XFile.cpp" />
+    <ClCompile Include="dxutil.cpp" />
+    <ClCompile Include="fps.cpp" />
+    <ClCompile Include="Terrain.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="camera.h" />
     <ClInclude Include="config.h" />
+    <ClInclude Include="d3dfont.h" />
+    <ClInclude Include="d3dutil.h" />
     <ClInclude Include="d3dUtility.h" />
+    <ClInclude Include="dxutil.h" />
+    <ClInclude Include="fps.h" />
+    <ClInclude Include="Terrain.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

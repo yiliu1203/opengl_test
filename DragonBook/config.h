@@ -4,4 +4,10 @@
 #define _05litPyramid_
 #define _06TexQuad_
 #define _06TexCube
-//#define _07MtrlAlpha_
+#define _07MtrlAlpha_
+#define _08StencilMirror_
+#define _08StencilShadow_
+#define _09CreateMeshFVF_
+#define _11XFile_
+#define _12CameraApp_
+//#define _13TerrainDriver_

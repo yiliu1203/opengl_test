@@ -36,12 +36,66 @@
     <ClCompile Include="01D3DInit.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="08StencilMirror.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="08StencilShadow.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="09CreateMeshFVF.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="camera.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="11XFile.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="12CameraApp.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Terrain.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="d3dfont.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="d3dutil.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="dxutil.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="fps.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="13TerrainDriver.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="d3dUtility.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="config.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="camera.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dxutil.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="fps.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="d3dutil.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="d3dfont.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Terrain.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
