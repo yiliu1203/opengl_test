@@ -162,7 +162,7 @@ bool Terrain::computeIndices()
 
 	if (FAILED(hr))
 		return false;
-
+	/////¸Ä
 	WORD* indices = 0;
 	_ib->Lock(0, 0, (void**)&indices, 0);
 
@@ -189,7 +189,6 @@ bool Terrain::computeIndices()
 	}
 
 	_ib->Unlock();
-
 	return true;
 }
 
@@ -469,6 +468,7 @@ bool Terrain::draw(D3DXMATRIX* world, bool drawTris)
 
 	if (_device)
 	{
+		//////¸Ä
 		_device->SetTransform(D3DTS_WORLD, world);
 
 		_device->SetStreamSource(0, _vb, 0, sizeof(TerrainVertex));
