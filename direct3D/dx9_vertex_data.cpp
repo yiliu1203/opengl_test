@@ -6,6 +6,10 @@
 //                 Direct3D by loading vertex data into a Vertex Buffer.
 //------------------------------------------------------------------------------
 
+#include "config.h"
+#ifndef _dx9_vertex_data_
+#define _dx9_vertex_data_
+
 #define STRICT
 #define WIN32_LEAN_AND_MEAN
 
@@ -313,3 +317,6 @@ void render(void)
 	g_pd3dDevice->EndScene();
 	g_pd3dDevice->Present(NULL, NULL, NULL, NULL);
 }
+
+
+#endif

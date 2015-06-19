@@ -9,7 +9,9 @@
 // Desc: Renders a terrain and allows you to walk around it. 
 //          
 //////////////////////////////////////////////////////////////////////////////////////////////////
-
+#include "config.h"
+#ifndef _13TerrainDriver_
+#define _13TerrainDriver_
 #include "d3dUtility.h"
 #include "terrain.h"
 #include "camera.h"
@@ -190,3 +192,5 @@ int WINAPI WinMain(HINSTANCE hinstance,
 
 	return 0;
 }
+
+#endif
