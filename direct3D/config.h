@@ -3,3 +3,4 @@
 #define _dx9_view_port_
 #define _dx9_primitive_types_
 #define _dx9_vertex_data_
+//#define _d3d_roam_

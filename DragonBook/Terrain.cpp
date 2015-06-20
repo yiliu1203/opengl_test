@@ -71,6 +71,7 @@ Terrain::Terrain(IDirect3DDevice9* device,
 		::MessageBox(0, L"computeIndices - FAILED", 0, 0);
 		::PostQuitMessage(0);
 	}
+	loadTexture("snowfield.jpg");
 }
 
 Terrain::~Terrain()
@@ -464,6 +465,7 @@ float Terrain::getHeight(float x, float z)
 
 bool Terrain::draw(D3DXMATRIX* world, bool drawTris)
 {
+
 	HRESULT hr = 0;
 
 	if (_device)

@@ -24,7 +24,7 @@ public:
 		return (int)_rawHeightdata[z*(_rowNum+1)+x] * _heightScale;
 	}
 
-	void draw();
+	bool draw(D3DXMATRIX* world);
 	bool loadTexFromFile(char * texFileName);
 	bool calcuteNormal();
 	float getHeightFromChar(unsigned char c)
@@ -32,6 +32,8 @@ public:
 		return (int)c *_heightScale;
 	}
 	float getHeightLerp(float x, float z);
+	bool  computeVertices();
+	bool  computeIndices();
 private:
 	IDirect3DTexture9*      _tex;
 	IDirect3DVertexBuffer9* _vb;
@@ -43,7 +45,7 @@ private:
 		 MultiByteToWideChar(CP_ACP, 0, c, -1, _pwchar, 100);
 		 return _pwchar;
 	 }
-
+	 //IDirect3DDevice9 *Device;
 	int _rowNum;
 	int _colNum;
 	float _widthX;		//¿í

@@ -246,9 +246,17 @@ void init(void)
 	g_pd3dDevice->SetRenderState(D3DRS_ZENABLE, TRUE);
 
 	D3DXMATRIX matProj;
+	D3DXMATRIX matView;
+	D3DXVECTOR3 position(0, 0, -10);
+	D3DXVECTOR3 target(0, 0, 1);
+	D3DXVECTOR3 updierct(0, 1, 0);
+	D3DXMatrixLookAtLH(&matView, &position, &target, &updierct);
+	g_pd3dDevice->SetTransform(D3DTS_VIEW, &matView);
+
 	D3DXMatrixPerspectiveFovLH(&matProj, D3DXToRadian(45.0f),
 		640.0f / 480.0f, 0.1f, 100.0f);
 	g_pd3dDevice->SetTransform(D3DTS_PROJECTION, &matProj);
+
 }
 
 //-----------------------------------------------------------------------------
@@ -298,7 +306,7 @@ void render(void)
 		D3DXToRadian(fYrot),
 		D3DXToRadian(fZrot));
 
-	matWorld = matRot * matTrans;
+	matWorld = matTrans* matRot;
 	g_pd3dDevice->SetTransform(D3DTS_WORLD, &matWorld);
 
 	g_pd3dDevice->BeginScene();

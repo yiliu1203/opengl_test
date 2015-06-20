@@ -42,7 +42,7 @@ bool Setup()
 
 	D3DXVECTOR3 lightDirection(0.0f, 1.0f, 0.0f);
 	TheTerrain = new Terrain(Device, "coastMountain64.raw", 64, 64, 10, 0.5f);
-	TheTerrain->genTexture(&lightDirection);
+//	TheTerrain->genTexture(&lightDirection);
 
 	//
 	// Create the font.
@@ -133,10 +133,10 @@ bool Display(float timeDelta)
 		D3DXMatrixIdentity(&I);
 
 		if (TheTerrain)
-			TheTerrain->draw(&I, false);
+			TheTerrain->draw(&I, true);
 
-		if (FPS)
-			FPS->render(0xffffffff, timeDelta);
+	//	if (FPS)
+	//		FPS->render(0xffffffff, timeDelta);
 
 		Device->EndScene();
 		Device->Present(0, 0, 0, 0);
