@@ -1,4 +1,5 @@
 
+
 #ifndef _D3D_HELP_
 #define _D3D_HELP_
 
@@ -6,7 +7,7 @@
 #include <string>
 #include <limits>
 
-wchar_t  _pwchar[100];
+static  wchar_t  _pwchar[100];
 
 namespace d3d{
 
@@ -19,7 +20,7 @@ namespace d3d{
 	const D3DXCOLOR       CYAN(D3DCOLOR_XRGB(0, 255, 255));
 	const D3DXCOLOR    MAGENTA(D3DCOLOR_XRGB(255, 0, 255));
 
-	wchar_t * tranlateChar2Wchar(const char * c)
+static 	wchar_t * tranlateChar2Wchar(const char * c)
 	{
 		MultiByteToWideChar(CP_ACP, 0, c, -1, _pwchar, 100);
 		return _pwchar;

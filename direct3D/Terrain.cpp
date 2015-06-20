@@ -51,7 +51,7 @@ bool Terrain::loadTexFromFile(char * texFileName)
 {
 	HRESULT hr= D3DXCreateTextureFromFile(
 		Device,
-		tranlateChar2Wchar(texFileName),
+		d3d::tranlateChar2Wchar(texFileName),
 		&_tex);
 	if (FAILED( hr)) return false;
 	Device->SetSamplerState(0, D3DSAMP_MAGFILTER, D3DTEXF_LINEAR);

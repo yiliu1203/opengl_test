@@ -40,11 +40,11 @@ private:
 	IDirect3DIndexBuffer9*  _ib;
 	 char * _rawFileName;
 	 wchar_t  _pwchar[100];
-	 wchar_t * tranlateChar2Wchar(const char * c)
+	/* wchar_t * tranlateChar2Wchar(const char * c)
 	 {
 		 MultiByteToWideChar(CP_ACP, 0, c, -1, _pwchar, 100);
 		 return _pwchar;
-	 }
+	 }*/
 	 //IDirect3DDevice9 *Device;
 	int _rowNum;
 	int _colNum;

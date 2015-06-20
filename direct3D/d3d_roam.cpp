@@ -1,22 +1,4 @@
-//------------------------------------------------------------------------------
-//           Name: dx9_primitive_types.cpp
-//         Author: Kevin Harris
-//  Last Modified: 06/06/05
-//    Description: This sample demonstrates how to properly use all the 
-//                 primitive types available under Direct3D.
-//
-//                 The primitive types are:
-//
-//                 D3DPT_POINTLIST
-//                 D3DPT_LINELIST
-//                 D3DPT_LINESTRIP
-//                 D3DPT_TRIANGLELIST
-//                 D3DPT_TRIANGLESTRIP
-//                 D3DPT_TRIANGLEFAN
-//
-//   Control Keys: F1 - Switch the primitive type to be rendered.
-//                 F2 - Toggle wire-frame mode.
-//------------------------------------------------------------------------------
+
 #include "config.h"
 #ifndef _d3d_roam_
 #define WIN32_LEAN_AND_MEAN
@@ -29,16 +11,20 @@ const int HEIGHT = 640;
 #include "resource.h"
 #include "Terrain.h"
 #include "camera.h"
-//-----------------------------------------------------------------------------
-// GLOBALS
-//-----------------------------------------------------------------------------
+#include "SkyBox.h"
 HWND              g_hWnd = NULL;
 LPDIRECT3D9       g_pD3D = NULL;
 LPDIRECT3DDEVICE9 Device = NULL;
 
 Terrain* pTerrain = 0;
 Camera   TheCamera(Camera::LANDOBJECT);
-LPD3DXMESH g_cube = NULL;
+SkyBox *skybox = 0;
+//LPD3DXMESH g_cube = NULL;
+
+POINT g_curPoint;
+POINT g_prePoint;
+float g_xdiff;
+float g_ydiff;
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	LPSTR lpCmdLine, int nCmdShow);
@@ -47,10 +33,6 @@ void init(void);
 void shutDown(void);
 void render(float deltatime);
 
-//-----------------------------------------------------------------------------
-// Name: WinMain()
-// Desc: The application's entry point
-//-----------------------------------------------------------------------------
 int WINAPI WinMain(HINSTANCE hInstance,
 	HINSTANCE hPrevInstance,
 	LPSTR     lpCmdLine,
@@ -142,6 +124,18 @@ LRESULT CALLBACK WindowProc(HWND   hWnd,
 	}
 		break;
 
+	case WM_LBUTTONDOWN:
+	{
+						  
+	}
+		
+
+	case WM_LBUTTONUP:
+	{
+				// g_bMousing = false;
+						
+	}
+		break;
 	case WM_CLOSE:
 	{
 					 PostQuitMessage(0);
@@ -196,14 +190,17 @@ void init(void)
 		&d3dpp, &Device);
 
 	Device->SetRenderState(D3DRS_LIGHTING, FALSE);
-	Device->SetRenderState(D3DRS_CULLMODE, D3DCULL_NONE);
+//	Device->SetRenderState(D3DRS_CULLMODE, D3DCULL_NONE);
 
 	D3DXMATRIX mProjection;
 	D3DXMatrixPerspectiveFovLH(&mProjection, D3DXToRadian(60.0f), 64/96.0f, 0.10f, 1000.0f);
 	Device->SetTransform(D3DTS_PROJECTION, &mProjection);
 
-	D3DXCreateBox(Device, 2, 2, 2, &g_cube, NULL);
+//	D3DXCreateBox(Device, 2, 2, 2, &g_cube, NULL);
 	pTerrain = new Terrain(63, 63, "coastMountain64.raw",1, 0.05);
+	skybox = new SkyBox();
+	skybox->loadTexture("front.jpg", "back.jpg",  "top.jpg","left.jpg", "right.jpg");
+	skybox->initTex(100);
 	//
 	// Point List
 	//
@@ -236,10 +233,10 @@ void render(float deltatime)
 		TheCamera.walk(-10 * deltatime);
 
 	if (::GetAsyncKeyState(VK_LEFT) & 0x8000f)
-		TheCamera.yaw(-10 * deltatime);
+		TheCamera.yaw(-1 * deltatime);
 
 	if (::GetAsyncKeyState(VK_RIGHT) & 0x8000f)
-		TheCamera.yaw(10 * deltatime);
+		TheCamera.yaw(1 * deltatime);
 
 	if (::GetAsyncKeyState('N') & 0x8000f)
 		TheCamera.strafe(-10 * deltatime);
@@ -273,6 +270,7 @@ void render(float deltatime)
 
 	//g_cube->DrawSubset(0);
 	pTerrain->draw(&mWorld);
+	skybox->draw();
 	Device->EndScene();
 	Device->Present(NULL, NULL, NULL, NULL);
 }
