@@ -81,12 +81,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="baseObj.h" />
+    <ClInclude Include="camera.h" />
     <ClInclude Include="config.h" />
     <ClInclude Include="d3d_help.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="SkyBox.h" />
     <ClInclude Include="Terrain.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="baseObj.cpp" />
+    <ClCompile Include="camera.cpp" />
     <ClCompile Include="d3d_help.cpp" />
     <ClCompile Include="d3d_roam.cpp" />
     <ClCompile Include="dx9_fullscreen.cpp" />
@@ -94,6 +99,7 @@
     <ClCompile Include="dx9_primitive_types.cpp" />
     <ClCompile Include="dx9_vertex_data.cpp" />
     <ClCompile Include="dx9_view_ports.cpp" />
+    <ClCompile Include="skyBox.cpp" />
     <ClCompile Include="Terrain.cpp" />
   </ItemGroup>
   <ItemGroup>

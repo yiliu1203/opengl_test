@@ -131,7 +131,7 @@ bool Display(float timeDelta)
 
 		D3DXMATRIX I;
 		D3DXMatrixIdentity(&I);
-
+	//	D3DXMatrixTranslation(&I, 0.0f, -20.0f, 10.0f);
 		if (TheTerrain)
 			TheTerrain->draw(&I, true);
 

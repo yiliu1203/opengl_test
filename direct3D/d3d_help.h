@@ -6,6 +6,8 @@
 #include <string>
 #include <limits>
 
+wchar_t  _pwchar[100];
+
 namespace d3d{
 
 	const D3DXCOLOR      WHITE(D3DCOLOR_XRGB(255, 255, 255));
@@ -17,16 +19,22 @@ namespace d3d{
 	const D3DXCOLOR       CYAN(D3DCOLOR_XRGB(0, 255, 255));
 	const D3DXCOLOR    MAGENTA(D3DCOLOR_XRGB(255, 0, 255));
 
+	wchar_t * tranlateChar2Wchar(const char * c)
+	{
+		MultiByteToWideChar(CP_ACP, 0, c, -1, _pwchar, 100);
+		return _pwchar;
+	}
+
 	struct VertexC
 	{
 		VertexC(){}
-		VertexC(float x, float y, float z, D3DXCOLOR C)
+		VertexC(float x, float y, float z, D3DCOLOR C)
 		{
 			_x = x; _y = y; _z = z;
 			_C = C;
 		}
 		float _x, _y, _z;
-		D3DXCOLOR _C;
+		D3DCOLOR _C;
 		static const DWORD FVF;
 	};
 
@@ -43,6 +51,18 @@ namespace d3d{
 		float _u, _v;
 
 		static const DWORD FVF;
+	};
+	struct VertexNTex
+	{
+		VertexNTex(){}
+		VertexNTex(float x, float y, float z, float nx, float ny, float nz,  float u, float v)
+		{
+			_x = x; _y = y; _z = z; _nx = nx; _ny = ny; _nz = nz; _u = u; _v = v;
+		}
+		float _x, _y, _z, _nx, _ny, _nz, _u, _v;
+	
+		static const DWORD FVF;
+
 	};
 
 }

@@ -181,16 +181,18 @@ bool Terrain::genrateVertex()
 	float wz, wx, wy;
 	float u1 = 1.0 / _colNum;
 	float v1 = 1.0 / _rowNum;
+	int index = 0;
+	wz = _depthZ / 2;
 	for (int z = _rowNum; z >= 0;z--)
 	{
-		wz = (z - _rowNum / 2) *_cellWide;
+		wx = -_widthX / 2;
 		for (int x = 0; x <= _colNum;x++)
-		{
-			wx = (x - _colNum / 2) *_cellWide;
-			int index = (_rowNum - z) *(_colNum + 1) + x;
+		{		
 			v[index] = d3d::VertexTex(wx, getHeightFromChar(_rawHeightdata[index]), wz,x*u1, (_rowNum-z)*v1);
+			wx += _cellWide;
+			index++;
 		}
-
+		wz -= _cellWide;
 	}
 	_vb->Unlock();
 	return true;
@@ -228,11 +230,28 @@ bool Terrain::genrateIndex()
 
 float Terrain::getHeightLerp(float x, float z)
 {
+	if (x<-_widthX / 2 || x>_widthX / 2 || z<-_depthZ / 2 || z>_depthZ / 2)
+		return 0;
 	x += _widthX / 2;
-	z += _depthZ / 2;
-	int i = x / _cellWide;
-	int j = z / _cellWide;
-	return getHeight(x, j);
+	z = _depthZ / 2 -z;
+	float f_x = x / _cellWide;
+	float f_z = z / _cellWide;
+	int i = x ;
+	int j = z+1;
+	float dx = f_x - i;
+	float dy =j-f_z ;
+	//AB
+	//CD 
+	float heightA = getHeight(i, j - 1);
+	float heightB = getHeight(i + 1, j - 1);
+	float heightC = getHeight(i, j);
+	float heightD = getHeight(i + 1, j);
+	if (dy> dx)
+	{
+		return heightA + (heightB - heightA)*dx + ( heightC-heightA)*(1-dy);
+	}
+	else return heightD + (heightB - heightD)*dy + (heightC-heightD )*(1-dx);
+//	return getHeight(i, j);
 }
 
 bool  Terrain::draw(D3DXMATRIX* worldTran)

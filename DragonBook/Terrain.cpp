@@ -403,6 +403,9 @@ float Terrain::getHeight(float x, float z)
 	x /= (float)_cellSpacing;
 	z /= (float)_cellSpacing;
 
+	if (x<0 || x<0 || x>_numCellsPerCol || z>_numCellsPerRow)
+		return 0;
+
 	// From now on, we will interpret our positive z-axis as
 	// going in the 'down' direction, rather than the 'up' direction.
 	// This allows to extract the row and column simply by 'flooring'
