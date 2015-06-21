@@ -8,7 +8,7 @@
 #include <vector>
 using namespace std;
 extern IDirect3DDevice9 *Device;
-
+//extern Camera *g_pCamera;
 class Terrain
 {
 public:

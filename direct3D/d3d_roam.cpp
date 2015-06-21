@@ -16,15 +16,17 @@ HWND              g_hWnd = NULL;
 LPDIRECT3D9       g_pD3D = NULL;
 LPDIRECT3DDEVICE9 Device = NULL;
 
-Terrain* pTerrain = 0;
-Camera   TheCamera(Camera::LANDOBJECT);
-SkyBox *skybox = 0;
+Terrain * g_pTerrain = 0;
+Camera * g_pCamera = 0;
+SkyBox *g_skybox = 0;
 //LPD3DXMESH g_cube = NULL;
-
+const float SPEED1 = 0.005;
 POINT g_curPoint;
 POINT g_prePoint;
 float g_xdiff;
 float g_ydiff;
+bool  g_MonseDowned;
+
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	LPSTR lpCmdLine, int nCmdShow);
@@ -126,16 +128,20 @@ LRESULT CALLBACK WindowProc(HWND   hWnd,
 
 	case WM_LBUTTONDOWN:
 	{
-						  
+						   g_MonseDowned = true;
+						   break;
+						 //  GetCursorPos(&g_prePoint);
+						//   ScreenToClient(g_hWnd, &g_prePoint);
+				
 	}
 		
 
 	case WM_LBUTTONUP:
 	{
-				// g_bMousing = false;
-						
+						 g_MonseDowned = false;	
+						 break;
 	}
-		break;
+		
 	case WM_CLOSE:
 	{
 					 PostQuitMessage(0);
@@ -143,7 +149,7 @@ LRESULT CALLBACK WindowProc(HWND   hWnd,
 
 	case WM_DESTROY:
 	{
-					   PostQuitMessage(0);
+					 PostQuitMessage(0);
 	}
 		break;
 
@@ -197,10 +203,11 @@ void init(void)
 	Device->SetTransform(D3DTS_PROJECTION, &mProjection);
 
 //	D3DXCreateBox(Device, 2, 2, 2, &g_cube, NULL);
-	pTerrain = new Terrain(63, 63, "coastMountain64.raw",1, 0.05);
-	skybox = new SkyBox();
-	skybox->loadTexture("front.jpg", "back.jpg",  "top.jpg","left.jpg", "right.jpg");
-	skybox->initTex(100);
+	g_pCamera = new Camera(Camera::CameraType::LANDOBJECT);
+	g_pTerrain = new Terrain(63, 63, "coastMountain64.raw",2, 0.1);
+	g_skybox = new SkyBox();
+	g_skybox->loadTexture("front.jpg", "back.jpg",  "top.jpg","left.jpg", "right.jpg");
+	g_skybox->initTex(500);
 	//
 	// Point List
 	//
@@ -217,48 +224,61 @@ void shutDown(void)
 	
 }
 
-//-----------------------------------------------------------------------------
-// Name: render()
-// Desc: Render or draw our scene to the monitor.
-//-----------------------------------------------------------------------------
+void duringRender()
+{
+	GetCursorPos(&g_curPoint);
+	ScreenToClient(g_hWnd, &g_curPoint);
+	if (g_MonseDowned)
+	{
+	//	GetCursorPos(&g_curPoint);
+	//	ScreenToClient(g_hWnd, &g_curPoint);
+		g_xdiff = g_curPoint.x - g_prePoint.x;
+		g_ydiff = g_curPoint.y - g_prePoint.y;
+		g_pCamera->yaw(g_xdiff*SPEED1);
+		g_pCamera->pitch(g_ydiff*SPEED1);
+		g_prePoint = g_curPoint;
+		
+	}
+	g_prePoint = g_curPoint;
+}
+
 void render(float deltatime)
 {
 	Device->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER,
 		D3DCOLOR_COLORVALUE(0.0f, 0.0f, 0.0f, 1.0f), 1.0f, 0);
-
+	duringRender();
 	if (::GetAsyncKeyState(VK_UP) & 0x8000f)
-		TheCamera.walk(10 * deltatime);
+		g_pCamera->walk(10 * deltatime);
 
 	if (::GetAsyncKeyState(VK_DOWN) & 0x8000f)
-		TheCamera.walk(-10 * deltatime);
+		g_pCamera->walk(-10 * deltatime);
 
 	if (::GetAsyncKeyState(VK_LEFT) & 0x8000f)
-		TheCamera.yaw(-1 * deltatime);
+		g_pCamera->yaw(-1 * deltatime);
 
 	if (::GetAsyncKeyState(VK_RIGHT) & 0x8000f)
-		TheCamera.yaw(1 * deltatime);
+		g_pCamera->yaw(1 * deltatime);
 
 	if (::GetAsyncKeyState('N') & 0x8000f)
-		TheCamera.strafe(-10 * deltatime);
+		g_pCamera->strafe(-10 * deltatime);
 
 	if (::GetAsyncKeyState('M') & 0x8000f)
-		TheCamera.strafe(10 * deltatime);
+		g_pCamera->strafe(10 * deltatime);
 
 	if (::GetAsyncKeyState('W') & 0x8000f)
-		TheCamera.pitch(1.0f * deltatime);
+		g_pCamera->pitch(1.0f * deltatime);
 
 	if (::GetAsyncKeyState('S') & 0x8000f)
-		TheCamera.pitch(-1.0f * deltatime);
-
+		g_pCamera->pitch(-1.0f * deltatime);
 
 	D3DXVECTOR3 pos;
-	TheCamera.getPosition(&pos);
-	float height = pTerrain->getHeightLerp(pos.x, pos.z);
+	g_pCamera->getPosition(&pos);
+	float height = g_pTerrain->getHeightLerp(pos.x, pos.z);
 	pos.y = height + 3.0f; // add height because we're standing up
-	TheCamera.setPosition(&pos);
+	g_pCamera->setPosition(&pos);
 
 	D3DXMATRIX V;
-	TheCamera.getViewMatrix(&V);
+	g_pCamera->getViewMatrix(&V);
 	Device->SetTransform(D3DTS_VIEW, &V);
 
 	Device->BeginScene();
@@ -269,8 +289,8 @@ void render(float deltatime)
 	Device->SetTransform(D3DTS_WORLD, &mWorld);
 
 	//g_cube->DrawSubset(0);
-	pTerrain->draw(&mWorld);
-	skybox->draw();
+	g_pTerrain->draw(&mWorld);
+	g_skybox->draw();
 	Device->EndScene();
 	Device->Present(NULL, NULL, NULL, NULL);
 }

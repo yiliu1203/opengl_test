@@ -2,11 +2,14 @@
 
 #include "baseObj.h"
 #include <d3dx9.h>
+#include "camera.h"
 extern IDirect3DDevice9 *Device;
+
 class SkyBox:BaseObj
 {
 public :
 	SkyBox();
+	~SkyBox();
 	bool loadTexture(char *front, char * back, char * left, char * right, char * top);
 	bool initTex(int len);
 	bool init();

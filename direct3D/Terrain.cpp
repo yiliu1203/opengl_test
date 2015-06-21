@@ -76,16 +76,12 @@ bool Terrain::computeVertices()
 	if (FAILED(hr))
 		return false;
 
-	// coordinates to start generating vertices at
 	int startX = -_widthX / 2;
 	int startZ = _depthZ / 2;
 
-	// coordinates to end generating vertices at
 	int endX = _widthX / 2;
 	int endZ = -_depthZ / 2;
 
-	// compute the increment size of the texture coordinates
-	// from one vertex to the next.
 	float uCoordIncrementSize = 1.0f / (float)_rowNum;
 	float vCoordIncrementSize = 1.0f / (float)_colNum;
 
@@ -236,8 +232,8 @@ float Terrain::getHeightLerp(float x, float z)
 	z = _depthZ / 2 -z;
 	float f_x = x / _cellWide;
 	float f_z = z / _cellWide;
-	int i = x ;
-	int j = z+1;
+	int i = f_x ;
+	int j = f_z+1;
 	float dx = f_x - i;
 	float dy =j-f_z ;
 	//AB
@@ -262,7 +258,7 @@ bool  Terrain::draw(D3DXMATRIX* worldTran)
 	Device->SetIndices(_ib);
 	Device->SetTexture(0,_tex);
 	Device->SetRenderState(D3DRS_LIGHTING, false);
-	Device->SetRenderState(D3DRS_FILLMODE, D3DFILL_WIREFRAME);
+//	Device->SetRenderState(D3DRS_FILLMODE, D3DFILL_WIREFRAME);
 	HRESULT hr = Device->DrawIndexedPrimitive(D3DPT_TRIANGLELIST,
 		0, 0, _vertexNum, 0, _triangleNum
 		);
