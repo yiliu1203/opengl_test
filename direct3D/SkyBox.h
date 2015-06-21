@@ -4,7 +4,7 @@
 #include <d3dx9.h>
 #include "camera.h"
 extern IDirect3DDevice9 *Device;
-
+extern Camera *g_pCamera;
 class SkyBox:BaseObj
 {
 public :

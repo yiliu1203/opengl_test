@@ -257,7 +257,7 @@ bool  Terrain::draw(D3DXMATRIX* worldTran)
 	Device->SetFVF(d3d::VertexTex::FVF);
 	Device->SetIndices(_ib);
 	Device->SetTexture(0,_tex);
-	Device->SetRenderState(D3DRS_LIGHTING, false);
+//	Device->SetRenderState(D3DRS_LIGHTING, false);
 //	Device->SetRenderState(D3DRS_FILLMODE, D3DFILL_WIREFRAME);
 	HRESULT hr = Device->DrawIndexedPrimitive(D3DPT_TRIANGLELIST,
 		0, 0, _vertexNum, 0, _triangleNum

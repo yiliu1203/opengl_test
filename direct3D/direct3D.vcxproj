@@ -87,6 +87,8 @@
     <ClInclude Include="d3d_help.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="SkyBox.h" />
+    <ClInclude Include="SnowMan.h" />
+    <ClInclude Include="SnowPartical.h" />
     <ClInclude Include="Terrain.h" />
   </ItemGroup>
   <ItemGroup>
@@ -100,6 +102,8 @@
     <ClCompile Include="dx9_vertex_data.cpp" />
     <ClCompile Include="dx9_view_ports.cpp" />
     <ClCompile Include="skyBox.cpp" />
+    <ClCompile Include="SnowMan.cpp" />
+    <ClCompile Include="SnowPartical.cpp" />
     <ClCompile Include="Terrain.cpp" />
   </ItemGroup>
   <ItemGroup>

@@ -138,8 +138,8 @@ bool Setup()
 	// Set Lights.
 	//
 
-	D3DXVECTOR3 dir(1.0f, -1.0f, 1.0f);
-	D3DXCOLOR col(1.0f, 1.0f, 1.0f, 1.0f);
+	D3DXVECTOR3 dir(0.0f, 0.0f, 1.0f);
+	D3DXCOLOR col(0.0f, 1.0f, 1.0f, 1.0f);
 	D3DLIGHT9 light = d3d::InitDirectionalLight(&dir, &col);
 
 	Device->SetLight(0, &light);
@@ -212,7 +212,7 @@ bool Display(float timeDelta)
 		// Render
 		//
 
-		Device->Clear(0, 0, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, 0xffffffff, 1.0f, 0);
+		Device->Clear(0, 0, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, 0, 1.0f, 0);
 		Device->BeginScene();
 
 		for (int i = 0; i < Mtrls.size(); i++)

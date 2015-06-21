@@ -6,9 +6,10 @@
 #include "d3d_help.h"
 #include <string>
 #include <vector>
+#include "camera.h"
 using namespace std;
 extern IDirect3DDevice9 *Device;
-//extern Camera *g_pCamera;
+extern Camera *g_pCamera;
 class Terrain
 {
 public:

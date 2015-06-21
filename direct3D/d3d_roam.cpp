@@ -9,9 +9,11 @@ const int HEIGHT = 640;
 #include <d3d9.h>
 #include <d3dx9.h>
 #include "resource.h"
-#include "Terrain.h"
 #include "camera.h"
+#include "Terrain.h"
 #include "SkyBox.h"
+#include "SnowMan.h"
+#include "SnowPartical.h"
 HWND              g_hWnd = NULL;
 LPDIRECT3D9       g_pD3D = NULL;
 LPDIRECT3DDEVICE9 Device = NULL;
@@ -19,6 +21,9 @@ LPDIRECT3DDEVICE9 Device = NULL;
 Terrain * g_pTerrain = 0;
 Camera * g_pCamera = 0;
 SkyBox *g_skybox = 0;
+SnowMan *g_pSnowMan = 0;
+SnowPartical * g_pSnowPartical = 0;
+
 //LPD3DXMESH g_cube = NULL;
 const float SPEED1 = 0.005;
 POINT g_curPoint;
@@ -34,7 +39,7 @@ LRESULT CALLBACK WindowProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 void init(void);
 void shutDown(void);
 void render(float deltatime);
-
+void setGlobalLight();
 int WINAPI WinMain(HINSTANCE hInstance,
 	HINSTANCE hPrevInstance,
 	LPSTR     lpCmdLine,
@@ -208,6 +213,13 @@ void init(void)
 	g_skybox = new SkyBox();
 	g_skybox->loadTexture("front.jpg", "back.jpg",  "top.jpg","left.jpg", "right.jpg");
 	g_skybox->initTex(500);
+
+	g_pSnowMan = new SnowMan();
+	g_pSnowMan->loadMesh("miki");
+	g_pSnowMan->setPos(0, 9, 0);
+	g_pSnowPartical = new SnowPartical();
+	g_pSnowPartical->initPartical();
+	setGlobalLight();
 	//
 	// Point List
 	//
@@ -221,6 +233,29 @@ void init(void)
 //-----------------------------------------------------------------------------
 void shutDown(void)
 {
+	
+}
+
+void setGlobalLight()
+{
+
+	D3DXVECTOR3 dir(1.0f, -1.0f, 1.0f);
+	D3DXCOLOR color(1.0f, 1.0f, 1.0f, 1.0f);
+	
+	D3DLIGHT9 light;
+	::ZeroMemory(&light, sizeof(light));
+
+	light.Type = D3DLIGHT_DIRECTIONAL;
+	light.Ambient = color * 0.4f;
+	light.Diffuse = color;
+	light.Specular = color * 0.6f;
+	light.Direction = dir;
+	Device->SetRenderState(D3DRS_LIGHTING, true);
+	Device->SetLight(0, &light);
+	Device->LightEnable(0, true);
+	Device->SetRenderState(D3DRS_NORMALIZENORMALS, true);
+	Device->SetRenderState(D3DRS_SPECULARENABLE, true);
+
 	
 }
 
@@ -274,7 +309,7 @@ void render(float deltatime)
 	D3DXVECTOR3 pos;
 	g_pCamera->getPosition(&pos);
 	float height = g_pTerrain->getHeightLerp(pos.x, pos.z);
-	pos.y = height + 3.0f; // add height because we're standing up
+	pos.y = height + 2.0f; // add height because we're standing up
 	g_pCamera->setPosition(&pos);
 
 	D3DXMATRIX V;
@@ -282,7 +317,7 @@ void render(float deltatime)
 	Device->SetTransform(D3DTS_VIEW, &V);
 
 	Device->BeginScene();
-
+	g_skybox->draw();
 	D3DXMATRIX mWorld;
 //	D3DXMatrixTranslation(&mWorld, 0.0f, -20.0f, 10.0f);
 	D3DXMatrixIdentity(&mWorld);
@@ -290,7 +325,9 @@ void render(float deltatime)
 
 	//g_cube->DrawSubset(0);
 	g_pTerrain->draw(&mWorld);
-	g_skybox->draw();
+	g_pSnowMan->draw();
+	g_pSnowPartical->UpdateSnowParticle(deltatime);
+	g_pSnowPartical->draw();
 	Device->EndScene();
 	Device->Present(NULL, NULL, NULL, NULL);
 }

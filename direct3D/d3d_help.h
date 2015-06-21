@@ -66,7 +66,16 @@ static 	wchar_t * tranlateChar2Wchar(const char * c)
 
 	};
 
+	struct Snow{
+		float x, y ,z;
+		float rotXaxis;
+		float rotyaxis;
+		float fallspeed;
+		float RotationSpeed;
+		int	  indexTex;
+	};
 }
+
 
 
 #endif

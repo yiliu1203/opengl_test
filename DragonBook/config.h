@@ -8,6 +8,6 @@
 #define _08StencilMirror_
 #define _08StencilShadow_
 #define _09CreateMeshFVF_
-#define _11XFile_
+//#define _11XFile_
 #define _12CameraApp_
-//#define _13TerrainDriver_
+#define _13TerrainDriver_

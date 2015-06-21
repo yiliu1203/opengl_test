@@ -36,6 +36,12 @@
     <ClInclude Include="SkyBox.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="SnowMan.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SnowPartical.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dx9_initialization.cpp">
@@ -69,6 +75,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="skyBox.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="SnowMan.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="SnowPartical.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

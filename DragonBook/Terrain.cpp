@@ -14,9 +14,9 @@
 #include <fstream>
 #include <cmath>
 
-LPWSTR wpstr = new wchar_t[200];
+static  LPWSTR wpstr = new wchar_t[200];
 
-void transpstr2pwstr(LPCSTR pstr)
+static  void transpstr2pwstr(LPCSTR pstr)
 {
 	MultiByteToWideChar(CP_ACP, 0, pstr, -1, wpstr, 100);
 }

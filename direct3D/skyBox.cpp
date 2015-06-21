@@ -4,9 +4,9 @@
 #include <d3dx9.h>
 #include "d3d_help.h"
 using namespace d3d;
+
 SkyBox::SkyBox()
 {
-	
 	_ib = NULL;
 	_vb = NULL;
 	for (size_t i = 0; i < 5; i++)
@@ -84,18 +84,21 @@ bool SkyBox::initTex(int len)
 bool SkyBox::draw()
 {
 	D3DXVECTOR3 cameraPos;
-//	g_pCamera->getPosition(&cameraPos);
-//	Device->GetTransform(D3DTS_WORLD, &preWorldMatrix);
-//	D3DXMatrixTranslation(&worldMatirx, cameraPos.x, cameraPos.y, cameraPos.z);
-//	Device->SetTransform(D3DTS_WORLD, &worldMatirx);
+	g_pCamera->getPosition(&cameraPos);
+	Device->GetTransform(D3DTS_WORLD, &preWorldMatrix);
+	D3DXMatrixTranslation(&worldMatirx, cameraPos.x, cameraPos.y, cameraPos.z);
+	Device->SetTransform(D3DTS_WORLD, &worldMatirx);
 
+	Device->SetRenderState(D3DRS_ZENABLE, D3DZB_FALSE);
+	Device->SetSamplerState(0, D3DSAMP_ADDRESSU, D3DTADDRESS_CLAMP);
+	Device->SetSamplerState(0, D3DSAMP_ADDRESSV, D3DTADDRESS_CLAMP);
 
 	Device->SetTextureStageState(0, D3DTSS_COLOROP, D3DTOP_SELECTARG1);  
 	Device->SetTextureStageState(0, D3DTSS_COLORARG1, D3DTA_TEXTURE);  
 //	D3DXMATRIX m;
 //	D3DXMatrixTranslation(&m, 0, _length/2, 0);
 //	Device->SetTransform(D3DTS_WORLD, &m);
-
+	Device->SetRenderState(D3DRS_LIGHTING, false);
 	Device->SetStreamSource(0, _vb, 0, sizeof(VertexNTex));
 	Device->SetFVF(VertexNTex::FVF);
 	Device->SetSamplerState(0, D3DSAMP_MAGFILTER, D3DTEXF_LINEAR);
@@ -104,9 +107,16 @@ bool SkyBox::draw()
 	Device->SetRenderState(D3DRS_FILLMODE, D3DFILL_SOLID);
 	for (int i = 0; i<5; i++)
 	{
+		
 		Device->SetTexture(0, _tex[i]);
 		Device->DrawPrimitive(D3DPT_TRIANGLEFAN, i * 4, 2);
 	}
 	Device->SetTransform(D3DTS_WORLD, &preWorldMatrix);
+
+	Device->SetSamplerState(0, D3DSAMP_ADDRESSU, D3DTADDRESS_WRAP);
+	Device->SetSamplerState(0, D3DSAMP_ADDRESSV, D3DTADDRESS_WRAP);
+	Device->SetRenderState(D3DRS_ZENABLE, D3DZB_TRUE);
+	Device->SetRenderState(D3DRS_LIGHTING, true);
+
 	return true;
 }
