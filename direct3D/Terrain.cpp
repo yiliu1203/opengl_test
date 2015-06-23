@@ -38,6 +38,13 @@ Terrain::Terrain(int rownum, int colnum, char *rawFileName, float cellWide, floa
 	}
 
 }
+Terrain::~Terrain()
+{
+	_tex->Release();
+	_vb->Release();
+	_ib->Release();
+	free(_rawHeightdata);
+}
 bool  Terrain::readRawFile(char * fileName)
 {
 	std::ifstream fin(_rawFileName, ios::binary);

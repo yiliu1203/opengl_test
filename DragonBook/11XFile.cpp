@@ -52,7 +52,7 @@ bool Setup()
 	DWORD        numMtrls = 0;
 
 	hr = D3DXLoadMeshFromX(
-		L"bigship1.x",
+		L"SnowMan.X",
 		D3DXMESH_MANAGED,
 		Device,
 		&adjBuffer,

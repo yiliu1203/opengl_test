@@ -8,10 +8,20 @@ SnowMan::SnowMan()
 	_numMtrls =0;
 	_mesh = NULL;
 }
+SnowMan::~SnowMan()
+{
+	_mesh->Release();
+	for (size_t i = 0; i < _vTexs.size(); i++)
+	{
+		if (_vTexs[i]!=0)
+			_vTexs[i]->Release();
+	}
+	
+}
 bool SnowMan::loadMesh(char * xFileName)
 {
 	HRESULT hr = D3DXLoadMeshFromX(
-		L"bigship1.x",
+		L"SnowMan.X",
 		D3DXMESH_MANAGED,
 		Device,
 		&_adjBuffer,
@@ -48,9 +58,14 @@ bool SnowMan::loadMesh(char * xFileName)
 
 bool SnowMan::draw()
 {
-
 	Device->GetTransform(D3DTS_WORLD, &preWorldMatrix);
 	D3DXMatrixTranslation(&worldMatirx, _pos.x, _pos.y, _pos.z);
+	D3DXMATRIX matScaling, matTrans, matRotX, matRotY, matRotZ, matFinal;
+
+	D3DXMatrixScaling(&matScaling, 0.15f, 0.15f, 0.15f);
+	D3DXMatrixRotationZ(&matRotZ, D3DX_PI);
+	D3DXMatrixRotationX(&matRotX, -D3DX_PI / 2);
+	worldMatirx = matScaling* matRotZ *matRotX*worldMatirx;
 	Device->SetTransform(D3DTS_WORLD, &worldMatirx);
 	
 	Device->SetSamplerState(0, D3DSAMP_MAGFILTER, D3DTEXF_LINEAR);

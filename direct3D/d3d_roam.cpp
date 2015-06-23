@@ -14,6 +14,8 @@ const int HEIGHT = 640;
 #include "SkyBox.h"
 #include "SnowMan.h"
 #include "SnowPartical.h"
+#include <math.h>
+#define PI  3.14159
 HWND              g_hWnd = NULL;
 LPDIRECT3D9       g_pD3D = NULL;
 LPDIRECT3DDEVICE9 Device = NULL;
@@ -24,6 +26,7 @@ SkyBox *g_skybox = 0;
 SnowMan *g_pSnowMan = 0;
 SnowPartical * g_pSnowPartical = 0;
 
+LPD3DXFONT								g_pTextDrawer = NULL;
 //LPD3DXMESH g_cube = NULL;
 const float SPEED1 = 0.005;
 POINT g_curPoint;
@@ -31,8 +34,11 @@ POINT g_prePoint;
 float g_xdiff;
 float g_ydiff;
 bool  g_MonseDowned;
-
-
+bool  isjumping = false;//标志是否在跳跃的过程中
+bool  startjump = false;//是否开始跳跃，需要记住开始跳跃时的y坐标
+float  startjumpHieght = 0;
+const float G_jumptime = 1.0f;
+float g_passjumptime = 0;
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	LPSTR lpCmdLine, int nCmdShow);
 LRESULT CALLBACK WindowProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
@@ -118,12 +124,17 @@ LRESULT CALLBACK WindowProc(HWND   hWnd,
 	{
 					   switch (wParam)
 					   {
-					   case VK_ESCAPE:
+					   case VK_ESCAPE:{
 						   PostQuitMessage(0);
-						   break;
+						   break; }
 
-					   case VK_F1:
+					   case VK_SPACE:
 					   {
+							if (!isjumping)
+							{
+								isjumping = true;
+								startjump = true;
+							}
 								
 					   }
 						   break;
@@ -208,7 +219,7 @@ void init(void)
 	Device->SetTransform(D3DTS_PROJECTION, &mProjection);
 
 //	D3DXCreateBox(Device, 2, 2, 2, &g_cube, NULL);
-	g_pCamera = new Camera(Camera::CameraType::LANDOBJECT);
+	g_pCamera = new Camera();
 	g_pTerrain = new Terrain(63, 63, "coastMountain64.raw",2, 0.1);
 	g_skybox = new SkyBox();
 	g_skybox->loadTexture("front.jpg", "back.jpg",  "top.jpg","left.jpg", "right.jpg");
@@ -220,6 +231,8 @@ void init(void)
 	g_pSnowPartical = new SnowPartical();
 	g_pSnowPartical->initPartical();
 	setGlobalLight();
+	D3DXCreateFont(Device, 20, 0, 1000, 0, false, DEFAULT_CHARSET,
+		OUT_DEFAULT_PRECIS, DEFAULT_QUALITY, 0, L"黑体", &g_pTextDrawer);
 	//
 	// Point List
 	//
@@ -233,7 +246,12 @@ void init(void)
 //-----------------------------------------------------------------------------
 void shutDown(void)
 {
-	
+	delete(g_pCamera);
+	delete(g_pTerrain);
+	delete(g_pSnowMan);
+	delete(g_pSnowPartical);
+	Device->Release();
+
 }
 
 void setGlobalLight()
@@ -309,8 +327,35 @@ void render(float deltatime)
 	D3DXVECTOR3 pos;
 	g_pCamera->getPosition(&pos);
 	float height = g_pTerrain->getHeightLerp(pos.x, pos.z);
-	pos.y = height + 2.0f; // add height because we're standing up
-	g_pCamera->setPosition(&pos);
+//	pos.y = height + 2.0f; 
+//	g_pCamera->setPosition(&pos);
+
+	if (startjump)
+	{
+		startjumpHieght = height;
+		startjump = false;
+	}
+
+	if (isjumping && g_passjumptime < G_jumptime )
+	{
+		float  rad = g_passjumptime / G_jumptime *PI;
+		float  jumpheight = sin(rad);
+		pos.y = jumpheight + 2 + startjumpHieght;
+		g_pCamera->setPosition(&pos);
+		g_passjumptime += deltatime;
+		if (pos.y < height+2)		//往高处跳时可能提起达到地面
+		{
+			pos.y = height + 2;
+			g_pCamera->setPosition(&pos);
+			isjumping = false;
+		}
+	}
+	else  {
+		pos.y =  height +2;
+		g_pCamera->setPosition(&pos);
+		g_passjumptime =0;
+		isjumping = false;
+	}
 
 	D3DXMATRIX V;
 	g_pCamera->getViewMatrix(&V);
@@ -328,6 +373,24 @@ void render(float deltatime)
 	g_pSnowMan->draw();
 	g_pSnowPartical->UpdateSnowParticle(deltatime);
 	g_pSnowPartical->draw();
+
+	RECT formatRect;
+	GetClientRect(g_hWnd, &formatRect);
+	formatRect.left = 0, formatRect.top = 380;
+	g_pTextDrawer->DrawText(NULL, L"控制说明:", -1, &formatRect,
+		DT_SINGLELINE | DT_NOCLIP | DT_LEFT, D3DCOLOR_RGBA(100, 100, 0, 255));
+	formatRect.top += 20;
+	g_pTextDrawer->DrawText(NULL, L"上、下方向键移动，左右方向键旋转视角", -1, &formatRect,
+		DT_SINGLELINE | DT_NOCLIP | DT_LEFT, D3DCOLOR_RGBA(100, 100, 0, 255));
+	formatRect.top += 20;
+	g_pTextDrawer->DrawText(NULL, L":w s键调整俯仰角度", -1, &formatRect,
+		DT_SINGLELINE | DT_NOCLIP | DT_LEFT, D3DCOLOR_RGBA(100, 100, 0, 255));	
+	formatRect.top += 20;
+	g_pTextDrawer->DrawText(NULL, L"鼠标左键拖拽旋转视角:", -1, &formatRect,
+		DT_SINGLELINE | DT_NOCLIP | DT_LEFT, D3DCOLOR_RGBA(100, 100, 0, 255));
+	formatRect.top += 20;
+	g_pTextDrawer->DrawText(NULL, L"空格键跳跃:", -1, &formatRect,
+		DT_SINGLELINE | DT_NOCLIP | DT_LEFT, D3DCOLOR_RGBA(100, 100, 0, 255));
 	Device->EndScene();
 	Device->Present(NULL, NULL, NULL, NULL);
 }

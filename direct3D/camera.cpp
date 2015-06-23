@@ -14,17 +14,7 @@
 
 Camera::Camera()
 {
-	_cameraType = AIRCRAFT;
 
-	_pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
-	_right = D3DXVECTOR3(1.0f, 0.0f, 0.0f);
-	_up = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
-	_look = D3DXVECTOR3(0.0f, 0.0f, 1.0f);
-}
-
-Camera::Camera(CameraType cameraType)
-{
-	_cameraType = cameraType;
 
 	_pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 	_right = D3DXVECTOR3(1.0f, 0.0f, 0.0f);
@@ -64,32 +54,23 @@ void Camera::getLook(D3DXVECTOR3* look)
 
 void Camera::walk(float units)
 {
-	// move only on xz plane for land object
-	if (_cameraType == LANDOBJECT)
-		_pos += D3DXVECTOR3(_look.x, 0.0f, _look.z) * units;
 
-	if (_cameraType == AIRCRAFT)
-		_pos += _look * units;
+	_pos += D3DXVECTOR3(_look.x, 0.0f, _look.z) * units;
+
 }
 
 void Camera::strafe(float units)
 {
-	// move only on xz plane for land object
-	if (_cameraType == LANDOBJECT)
-		_pos += D3DXVECTOR3(_right.x, 0.0f, _right.z) * units;
 
-	if (_cameraType == AIRCRAFT)
-		_pos += _right * units;
+	_pos += D3DXVECTOR3(_right.x, 0.0f, _right.z) * units;
+
+
 }
 
 void Camera::fly(float units)
 {
-	// move only on y-axis for land object
-	if (_cameraType == LANDOBJECT)
-		_pos.y += units;
 
-	if (_cameraType == AIRCRAFT)
-		_pos += _up * units;
+	_pos.y += units;
 }
 
 void Camera::pitch(float angle)
@@ -97,7 +78,6 @@ void Camera::pitch(float angle)
 	D3DXMATRIX T;
 	D3DXMatrixRotationAxis(&T, &_right, angle);
 
-	// rotate _up and _look around _right vector
 	D3DXVec3TransformCoord(&_up, &_up, &T);
 	D3DXVec3TransformCoord(&_look, &_look, &T);
 }
@@ -106,32 +86,14 @@ void Camera::yaw(float angle)
 {
 	D3DXMATRIX T;
 
-	// rotate around world y (0, 1, 0) always for land object
-	if (_cameraType == LANDOBJECT)
+
 		D3DXMatrixRotationY(&T, angle);
 
-	// rotate around own up vector for aircraft
-	if (_cameraType == AIRCRAFT)
-		D3DXMatrixRotationAxis(&T, &_up, angle);
-
-	// rotate _right and _look around _up or y-axis
 	D3DXVec3TransformCoord(&_right, &_right, &T);
 	D3DXVec3TransformCoord(&_look, &_look, &T);
 }
 
-void Camera::roll(float angle)
-{
-	// only roll for aircraft type
-	if (_cameraType == AIRCRAFT)
-	{
-		D3DXMATRIX T;
-		D3DXMatrixRotationAxis(&T, &_look, angle);
 
-		// rotate _up and _right around _look vector
-		D3DXVec3TransformCoord(&_right, &_right, &T);
-		D3DXVec3TransformCoord(&_up, &_up, &T);
-	}
-}
 
 void Camera::getViewMatrix(D3DXMATRIX* V)
 {
@@ -155,7 +117,4 @@ void Camera::getViewMatrix(D3DXMATRIX* V)
 	(*V)(3, 0) = x;        (*V)(3, 1) = y;     (*V)(3, 2) = z;       (*V)(3, 3) = 1.0f;
 }
 
-void Camera::setCameraType(CameraType cameraType)
-{
-	_cameraType = cameraType;
-}
+

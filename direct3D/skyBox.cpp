@@ -17,6 +17,16 @@ SkyBox::SkyBox()
 
 	_length = 0;
 }
+SkyBox::~SkyBox()
+{
+	_tex[0]->Release();
+	_tex[1]->Release();
+	_tex[2]->Release();
+	_tex[3]->Release();
+	_tex[4]->Release();
+	_vb->Release();
+	_ib->Release();
+}
 
 bool SkyBox::loadTexture(char *front, char * back, char * top, char * left, char * right)
 {

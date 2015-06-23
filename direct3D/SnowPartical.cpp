@@ -47,6 +47,11 @@ bool SnowPartical::initPartical()
 	 D3DXCreateTextureFromFile(Device, L"snow1.jpg", &_tex);
 	 return true;
 }
+SnowPartical::~SnowPartical()
+{
+	_vb->Release();
+	_tex->Release();
+}
 
 
 bool SnowPartical::draw()
